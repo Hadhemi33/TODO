@@ -1,20 +1,46 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import "react-native-gesture-handler";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import Splach from "./src/screens/Splach";
+import Home from "./src/screens/Home";
+import Edit from "./src/screens/Edit";
 
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+const Stack = createStackNavigator();
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: "#ffffff",
+  },
+};
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer theme={theme}>
+      <Stack.Navigator
+        screenOptions={{
+          headerTitleAlign: "center",
+          headerShadowVisible: false,
+        }}
+      >
+        <Stack.Screen
+          name="Splash"
+          component={Splach}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Edit"
+          component={Edit}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
