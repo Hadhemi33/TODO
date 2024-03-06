@@ -1,20 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, SafeAreaView } from "react-native";
 import styles from "./styles";
 import Categories from "../../components/Categories";
-const All = "All";
+import axios from "axios";
 import categories from "./categories.json";
 import Input from "../../components/Input";
 import { FlatList } from "react-native-gesture-handler";
 import Card from "../../components/Card";
 import AddBtn from "../../components/Button/AddBtn";
-import colors from "../../constants/colors";
+import TasksComponent from "../../components/TaskComponent";
+const All = "All";
+
 const Home = ({ navigation, title }) => {
   const [selectedCategory, setSelectedCategory] = useState(All);
   const [checked, setChecked] = useState([]);
+  const [tasks, setTasks] = useState([]);
 
   return (
     <>
+      {/* <TasksComponent /> */}
       <SafeAreaView style={styles.container}>
         <View style={styles.row}>
           <Input placeholder="   Search ... " style={styles.InputTex}></Input>
@@ -27,6 +31,7 @@ const Home = ({ navigation, title }) => {
           categories={[All, ...categories]}
         />
         <FlatList
+          // data={tasks}
           data={Card}
           renderItem={({ item }) => (
             <Card
@@ -36,9 +41,11 @@ const Home = ({ navigation, title }) => {
               //   require("../../../assets/notChecked.png")
               // })}
               onPress={() => navigation.navigate("Edit")}
-              title={item}
+              title={`Task: `}
+              desc={item}
             />
           )}
+          // keyExtractor={(item) => item}
           keyExtractor={(item) => item}
         />
         {/* <View>
