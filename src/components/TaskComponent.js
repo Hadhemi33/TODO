@@ -20,9 +20,9 @@ const TasksComponent = () => {
 
   return (
     <View>
-      {data.getTasks.map((task) => (
-        <Text key={task.id}>{task.desc}</Text>
-      ))}
+      {/* {data.getTasks.map((task) => (
+        // <Text key={task.id}>{task.desc}</Text>
+      ))} */}
     </View>
   );
 };

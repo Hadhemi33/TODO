@@ -4,7 +4,7 @@ import React from "react";
 import Splach from "./src/screens/Splach";
 import Home from "./src/screens/Home";
 import Edit from "./src/screens/Edit";
-
+import Create from "./src/screens/Create";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { ApolloProvider } from "@apollo/client";
@@ -42,6 +42,11 @@ export default function App() {
           <Stack.Screen
             name="Edit"
             component={Edit}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Create"
+            component={Create}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

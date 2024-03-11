@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     textTransform: "capitalize",
     alignSelf: "center",
+
     justifyContent: "space-between",
   },
   // selectedItem: {
@@ -28,6 +29,14 @@ const styles = StyleSheet.create({
     // justifyContent: "space-between",
     borderRadius: 20,
     // backgroundColor: colors.white,
+  },
+  fatlist: {
+    marginHorizontal: 24,
+    marginTop: 24,
+    // backgroundColor: colors.red,
+    padding: 20,
+    height: 100,
+    // marginBottom: 24,
   },
   // selectedItemContainer: {
   //   backgroundColor: colors.green,

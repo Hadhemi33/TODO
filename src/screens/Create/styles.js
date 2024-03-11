@@ -3,52 +3,52 @@ import colors from "../../constants/colors";
 const { width } = Dimensions.get("window");
 const styles = StyleSheet.create({
   kbir: {
-    flexDirection: "column",
-    justifyContent: "space-between",
-
+    // flexDirection: "column",
+    // justifyContent: "space-between",
     width: 380,
-    height: 150,
+    height: 350,
     borderRadius: 50,
-    marginTop: 20,
+    marginTop: 180,
     alignSelf: "center",
+
     backgroundColor: colors.white,
     borderWidth: 1,
     borderColor: colors.grey,
   },
-  HeaderCard: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    // marginVertical: 15,
-    // marginHorizontal: 20,
-    alignItems: "center",
-  },
+
   TitreCard: {
     flexDirection: "row",
+    justifyContent: "center",
+
     marginVertical: 15,
     marginHorizontal: 35,
     alignItems: "center",
   },
   Title: {
-    fontSize: 18,
+    fontSize: 30,
     color: colors.black,
     fontWeight: "normal",
     marginLeft: 10,
 
     // marginHorizontal: 20,
   },
-  isChecked: {
-    marginTop: -45,
-    marginRight: 25,
-  },
+
   BodyCard: {
-    marginHorizontal: 35,
+    // marginHorizontal: 35,
+    // marginVertical: 35,
+    margin: 35,
+    // textAlign: "justify",
+    // alignItems: "center",
+    // alignContent: "center",
+    // alignSelf: "center",
   },
   BodyText: {
-    fontSize: 16,
+    fontSize: 20,
   },
   FooterCard: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
+
     padding: 15,
   },
 });

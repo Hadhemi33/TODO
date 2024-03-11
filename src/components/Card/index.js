@@ -10,22 +10,51 @@ import {
 import styles from "./styles";
 import colors from "../../constants/colors";
 import { gql } from "apollo-boost";
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 
 export const TASKS_QUERY = gql`
   query Query {
     getTasks {
       id
       desc
+      checked
     }
-    deleteTask {
+  }
+`;
+const DELETE_TODO = gql`
+  mutation DeleteTask($id: Float!) {
+    deleteTask(id: $id) {
       id
+      desc
+      checked
     }
   }
 `;
 const Card = ({ id, image, onPress, navigation, item, desc }) => {
   const { data, loading, error } = useQuery(TASKS_QUERY);
 
+  // const [deleteTask] = useMutation(DELETE_TODO, {
+  //   update(cache, { data: { deleteTask } }) {
+  //     // Update the cache to remove the deleted task
+  //     cache.modify({
+  //       fields: {
+  //         getTasks(existingTasks = []) {
+  //           return existingTasks.filter((task) => task.id !== deleteTask.id);
+  //         },
+  //       },
+  //     });
+  //   },
+  // });
+  const [deleteTask] = useMutation(DELETE_TODO, {
+    refetchQueries: [{ query: TASKS_QUERY }],
+  });
+  const handleDeleteTask = async (taskId) => {
+    try {
+      await deleteTask({ variables: { id: taskId } });
+    } catch (error) {
+      console.error("Error deleting task:", error);
+    }
+  };
   if (loading) {
     return (
       <View style={styles.container}>
@@ -56,18 +85,23 @@ const Card = ({ id, image, onPress, navigation, item, desc }) => {
           <View style={styles.HeaderCard}>
             <View style={styles.TitreCard}>
               <Image source={require("../../../assets/taskCircle.png")}></Image>
-              {/* {data.getTasks.map((task) => ( */}
+
               <Text onPress={onPress}> Task {item.id}</Text>
-              {/* ))} */}
-              {/* <Text onPress={onPress} style={styles.Title}> */}
-              {/* {title}
-            </Text> */}
             </View>
             <TouchableOpacity>
-              <Image
-                style={styles.isChecked}
-                source={require("../../../assets/checked.png")}
-              ></Image>
+              {item.checked == true ? (
+                <>
+                  <Image
+                    style={styles.isChecked}
+                    source={require("../../../assets/checked.png")}
+                  ></Image>
+                </>
+              ) : (
+                <Image
+                  style={styles.isChecked}
+                  source={require("../../../assets/notChecked.png")}
+                ></Image>
+              )}
             </TouchableOpacity>
           </View>
           <View style={styles.BodyCard}>
@@ -78,7 +112,11 @@ const Card = ({ id, image, onPress, navigation, item, desc }) => {
               <Image source={require("../../../assets/edit.png")}></Image>
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                handleDeleteTask(item.id);
+              }}
+            >
               <Image source={require("../../../assets/delete.png")}></Image>
             </TouchableOpacity>
           </View>

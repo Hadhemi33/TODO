@@ -10,10 +10,7 @@ const Categories = ({ categories, selectedCategory, onCategoryPress }) => {
       data={categories}
       keyExtractor={(item) => String(item)}
       showsHorizontalScrollIndicator={false}
-      style={{
-        marginHorizontal: 24,
-        marginTop: 24,
-      }}
+      style={styles.fatlist}
       renderItem={({ item, index }) => {
         const selected = selectedCategory === item;
         const displayName = item?.replace("_", " ");
