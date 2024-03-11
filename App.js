@@ -21,8 +21,8 @@ const theme = {
 
 export default function App() {
   return (
-    <ApolloProvider client={client}>
-      <NavigationContainer theme={theme}>
+    <NavigationContainer theme={theme}>
+      <ApolloProvider client={client}>
         <Stack.Navigator
           screenOptions={{
             headerTitleAlign: "center",
@@ -45,7 +45,7 @@ export default function App() {
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
-      </NavigationContainer>
-    </ApolloProvider>
+      </ApolloProvider>
+    </NavigationContainer>
   );
 }

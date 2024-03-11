@@ -10,7 +10,11 @@ import AddBtn from "../../components/Button/AddBtn";
 import Button from "../../components/Button";
 import colors from "../../constants/colors";
 
-const Edit = ({ navigation }) => {
+const Edit = ({ navigation, route, desc }) => {
+  const { item } = route?.params || {};
+  console.log("item?.instructions :>> ", item);
+  // const id = item?.id;
+
   const [selectedCategory, setSelectedCategory] = useState(All);
   const [data, setdata] = useState([]);
 
@@ -23,7 +27,7 @@ const Edit = ({ navigation }) => {
         </View>
 
         <View style={styles.BodyCard}>
-          <Text style={styles.BodyText}>This is the body of the card</Text>
+          <Text style={styles.BodyText}>{item}</Text>
         </View>
       </View>
       <View style={styles.FooterCard}>
