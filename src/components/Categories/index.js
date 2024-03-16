@@ -29,8 +29,6 @@ const Categories = ({ categories, selectedCategory, onCategoryPress }) => {
               onPress={() => onCategoryPress(item)}
               style={[
                 [styles.itemContainer, { backgroundColor: backgroundColor }],
-                //   selected ? styles.selectedItemContainer : {},
-                // index === 0 ? { marginLeft: 24 } : {},
               ]}
             >
               <Text style={[styles.item, selected ? styles.selectedItem : {}]}>

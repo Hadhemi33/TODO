@@ -28,15 +28,12 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     // justifyContent: "space-between",
     borderRadius: 20,
-    // backgroundColor: colors.white,
   },
   fatlist: {
     marginHorizontal: 24,
     marginTop: 24,
-    // backgroundColor: colors.red,
     padding: 20,
-    height: 100,
-    // marginBottom: 24,
+    height: 110,
   },
   // selectedItemContainer: {
   //   backgroundColor: colors.green,

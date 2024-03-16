@@ -1,33 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, SafeAreaView, Image, Text } from "react-native";
 import styles from "./styles";
-const All = "All";
-
-import Input from "../../components/Input";
-import { FlatList } from "react-native-gesture-handler";
-import Card from "../../components/Card";
-import AddBtn from "../../components/Button/AddBtn";
 import Button from "../../components/Button";
 import colors from "../../constants/colors";
 
-const Edit = ({ navigation, route, desc }) => {
+const Edit = ({ navigation, route }) => {
   const { item } = route?.params || {};
-
-  // const id = item?.id;
-
-  const [selectedCategory, setSelectedCategory] = useState(All);
-  const [data, setdata] = useState([]);
+  console.log(route?.params);
 
   return (
     <SafeAreaView>
       <View style={styles.kbir}>
         <View style={styles.TitreCard}>
-          <Image source={require("../../../assets/taskCircle.png")}></Image>
-          <Text style={styles.Title}>Task 1</Text>
+          <Image source={require("../../../assets/taskCircle.png")} />
+          <Text style={styles.Title}>{item ? item.id : ""}</Text>
         </View>
 
         <View style={styles.BodyCard}>
-          <Text style={styles.BodyText}>{item}</Text>
+          <Text style={styles.BodyText}>{item ? item.id : ""}</Text>
         </View>
       </View>
       <View style={styles.FooterCard}>
@@ -36,7 +26,7 @@ const Edit = ({ navigation, route, desc }) => {
           image={require("../../../assets/arrowRight.png")}
           bac={colors.yellow}
           onPress={() => navigation.navigate("Home")}
-        ></Button>
+        />
       </View>
     </SafeAreaView>
   );

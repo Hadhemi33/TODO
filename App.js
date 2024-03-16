@@ -4,6 +4,7 @@ import React from "react";
 import Splach from "./src/screens/Splach";
 import Home from "./src/screens/Home";
 import Edit from "./src/screens/Edit";
+
 import Create from "./src/screens/Create";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";

@@ -6,6 +6,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
     paddingHorizontal: 15,
     paddingVertical: 60,
+    marginBottom: 180,
+    // backgroundColor: colors.green,
 
     alignItems: "center",
   },
@@ -39,7 +41,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     // alignContent: "center",
     // backgroundColor: colors.green,
-
     flexDirection: "row",
     // justifyContent: "center",
 
@@ -56,7 +57,9 @@ const styles = StyleSheet.create({
     height: "100%",
     // paddingHorizontal: 20,
     // marginTop: 20,
-    // backgroundColor: colors.green,
+  },
+  card: {
+    marginBottom: 100,
   },
 });
 

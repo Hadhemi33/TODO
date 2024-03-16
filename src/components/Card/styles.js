@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
 
     width: 380,
-    height: 150,
+    height: 180,
     borderRadius: 50,
     marginTop: 20,
     alignSelf: "center",

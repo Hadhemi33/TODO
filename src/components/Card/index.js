@@ -1,16 +1,8 @@
 import React from "react";
-import {
-  Image,
-  View,
-  Text,
-  TouchableOpacity,
-  SafeAreaView,
-  FlatList,
-} from "react-native";
+import { Image, View, Text, TouchableOpacity, FlatList } from "react-native";
 import styles from "./styles";
-import colors from "../../constants/colors";
-import { gql } from "apollo-boost";
-import { useMutation, useQuery } from "@apollo/client";
+
+import { useMutation, useQuery, gql } from "@apollo/client";
 
 export const TASKS_QUERY = gql`
   query Query {
@@ -23,28 +15,12 @@ export const TASKS_QUERY = gql`
 `;
 const DELETE_TODO = gql`
   mutation DeleteTask($id: Float!) {
-    deleteTask(id: $id) {
-      id
-      desc
-      checked
-    }
+    deleteTask(id: $id)
   }
 `;
 const Card = ({ id, image, onPress, navigation, item, desc }) => {
   const { data, loading, error } = useQuery(TASKS_QUERY);
 
-  // const [deleteTask] = useMutation(DELETE_TODO, {
-  //   update(cache, { data: { deleteTask } }) {
-  //     // Update the cache to remove the deleted task
-  //     cache.modify({
-  //       fields: {
-  //         getTasks(existingTasks = []) {
-  //           return existingTasks.filter((task) => task.id !== deleteTask.id);
-  //         },
-  //       },
-  //     });
-  //   },
-  // });
   const [deleteTask] = useMutation(DELETE_TODO, {
     refetchQueries: [{ query: TASKS_QUERY }],
   });
@@ -108,7 +84,7 @@ const Card = ({ id, image, onPress, navigation, item, desc }) => {
             <Text style={styles.BodyText}>{item.desc}</Text>
           </View>
           <View style={styles.FooterCard}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Create")}>
               <Image source={require("../../../assets/edit.png")}></Image>
             </TouchableOpacity>
 
